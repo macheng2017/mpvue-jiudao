@@ -9,7 +9,7 @@
 	},
 	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
-	"appid": "touristappid",
+	"appid": "wxf985e2db4b2169e8",
 	"projectname": "mpvue-jiudao",
 	"condition": {
 		"search": {
