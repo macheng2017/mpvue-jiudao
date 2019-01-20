@@ -1,21 +1,20 @@
 <template>
   <div @click="onLike" class="container">
     <img :src="heart" alt="">
-    <span>{{like?count1:count2}}</span>
+    <span>{{count}}</span>
   </div>
 </template>
 
 <script>
 export default {
-  props() {
+  props: {
+
+    like: {type: Boolean},
+    count: {type: Number, default: 0}
 
   },
   data() {
     return {
-      like: true,
-      count1: 999,
-      count2: 111,
-      count: 999
 
     }
   },
@@ -27,6 +26,15 @@ export default {
   methods: {
     onLike(event) {
       console.log('object', event)
+      // if (this.like) {
+      //   this.count--
+      //   this.like = false
+      // } else {
+      //   this.count++
+      //   this.like = true
+      // }
+      this.count = this.like ? this.count - 1 : this.count + 1
+      this.like = !this.like
     }
   }
 
