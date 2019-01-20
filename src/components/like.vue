@@ -7,7 +7,10 @@
 
 <script>
 export default {
-  data () {
+  props() {
+
+  },
+  data() {
     return {
       like: true,
       count1: 999,
@@ -17,12 +20,12 @@ export default {
     }
   },
   computed: {
-    heart () {
-      return this.like ? '../../components/img/like.png' : '../../components/img/like@dis.png'
+    heart() {
+      return this.like ? '/static/img/like.png' : '/static/img/like@dis.png'
     }
   },
   methods: {
-    onLike (event) {
+    onLike(event) {
       console.log('object', event)
     }
   }

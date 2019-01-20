@@ -26,7 +26,7 @@
 import card from '@/components/card'
 
 export default {
-  data () {
+  data() {
     return {
       motto: 'Hello World',
       userInfo: {}
@@ -38,11 +38,11 @@ export default {
   },
 
   methods: {
-    bindViewTap () {
+    bindViewTap() {
       const url = '../logs/main'
       wx.navigateTo({ url })
     },
-    getUserInfo () {
+    getUserInfo() {
       // 调用登录接口
       wx.login({
         success: () => {
@@ -54,12 +54,12 @@ export default {
         }
       })
     },
-    clickHandle (msg, ev) {
+    clickHandle(msg, ev) {
       console.log('clickHandle:', msg, ev)
     }
   },
 
-  created () {
+  created() {
     // 调用应用实例的方法获取全局数据
     this.getUserInfo()
   }

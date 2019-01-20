@@ -8,7 +8,7 @@
 <script>
 import like from '@/components/like'
 export default {
-  data () {
+  data() {
     return {}
   },
   components: {
