@@ -23,6 +23,7 @@ export default {
       return this.like ? '/static/img/like.png' : '/static/img/like@dis.png'
     }
   },
+
   methods: {
     onLike(event) {
       console.log('object', event)
