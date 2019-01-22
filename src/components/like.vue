@@ -1,6 +1,6 @@
 <template>
   <div @click="onLike" class="container">
-    <img :src="heart" alt="">
+    <img :src="heart" alt>
     <span>{{count}}</span>
   </div>
 </template>
@@ -8,15 +8,11 @@
 <script>
 export default {
   props: {
-
-    like: {type: Boolean},
-    count: {type: Number, default: 0}
-
+    like: { type: Boolean },
+    count: { type: Number, default: 0 }
   },
   data() {
-    return {
-
-    }
+    return {}
   },
   computed: {
     heart() {
@@ -38,27 +34,25 @@ export default {
       this.like = !this.like
     }
   }
-
 }
 </script>
 
 <style scoped>
-  .container{
-    display:inline-flex;
-    flex-direction:row;
-    padding:10rpx;
-  }
-  .container img {
-    width:32rpx;
-    height:28rpx;
-  }
-  .container span{
-    font-family: "PingFangSC-Thin";
-    font-size: 24rpx;
-    position: relative;
-    bottom: 10rpx;
-    left: 10rpx;
-    line-height: 24rpx;
-  }
-
+.container {
+  display: inline-flex;
+  flex-direction: row;
+  padding: 10rpx;
+}
+.container img {
+  width: 32rpx;
+  height: 28rpx;
+}
+.container span {
+  font-family: 'PingFangSC-Thin';
+  font-size: 24rpx;
+  position: relative;
+  bottom: 10rpx;
+  left: 10rpx;
+  line-height: 24rpx;
+}
 </style>

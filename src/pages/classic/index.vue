@@ -17,7 +17,7 @@ export default {
   async mounted() {
     wx.request({
       url: 'http://bl.7yue.pro/v1/classic/latest',
-      header: {appkey: 'L1jx1MUHo615XJGx'}
+      header: { appkey: 'L1jx1MUHo615XJGx' }
     })
   }
 }
