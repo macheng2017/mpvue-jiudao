@@ -1,6 +1,6 @@
 <template>
   <div @click="onLike" class="container">
-    <img :src="heart" alt>
+    <img :src="heart">
     <span>{{count}}</span>
   </div>
 </template>
@@ -22,7 +22,7 @@ export default {
 
   methods: {
     onLike(event) {
-      console.log('object', event)
+      // console.log('object', event)
       // if (this.like) {
       //   this.count--
       //   this.like = false
@@ -32,6 +32,8 @@ export default {
       // }
       this.count = this.like ? this.count - 1 : this.count + 1
       this.like = !this.like
+      // 子组件向父组件传递信息
+      this.$emit('on-like', { like: this.like })
     }
   }
 }
@@ -42,6 +44,7 @@ export default {
   display: inline-flex;
   flex-direction: row;
   padding: 10rpx;
+  width: 90rpx;
 }
 .container img {
   width: 32rpx;

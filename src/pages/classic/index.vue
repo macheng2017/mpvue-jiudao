@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Like :like="classic.like_status" :count="classic.fav_nums"></Like>
+    <Like :like="classic.like_status" :count="classic.fav_nums" @on-like="onLike"></Like>
     <Movie :img="classic.image" :content="classic.content"></Movie>
   </div>
 </template>
@@ -20,6 +20,11 @@ export default {
   components: {
     Like,
     Movie
+  },
+  methods: {
+    onLike(event) {
+      console.log(event)
+    }
   },
   mounted() {
     // wx.request({
