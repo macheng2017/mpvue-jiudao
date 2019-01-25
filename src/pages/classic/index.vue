@@ -1,6 +1,8 @@
 <template>
   <div>
+    <Episode></Episode>
     <Like :like="classic.like_status" :count="classic.fav_nums" @on-like="onLike"></Like>
+
     <Movie :img="classic.image" :content="classic.content"></Movie>
   </div>
 </template>
@@ -8,6 +10,7 @@
 <script>
 import Like from '@/components/like'
 import Movie from '@/components/movie'
+import Episode from '@/components/Episode'
 import ClassicModel from '@/models/classic.js'
 import LikeModel from '@/models/like.js'
 let classicModel = new ClassicModel()
@@ -21,7 +24,8 @@ export default {
   },
   components: {
     Like,
-    Movie
+    Movie,
+    Episode
   },
   methods: {
     onLike(event) {
