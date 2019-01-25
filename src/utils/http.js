@@ -19,7 +19,8 @@ class Http {
       success: res => {
         let code = res.statusCode.toString()
         if (code.startsWith('2')) {
-          params.success(res.data)
+          params.success && params.success(res.data)
+          // 这种写法等同于 if(params.success){...}
         } else {
           let errorCode = res.data.error_code
           this._showError(errorCode)

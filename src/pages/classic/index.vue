@@ -9,7 +9,9 @@
 import Like from '@/components/like'
 import Movie from '@/components/movie'
 import ClassicModel from '@/models/classic.js'
-let classic = new ClassicModel()
+import LikeModel from '@/models/like.js'
+let classicModel = new ClassicModel()
+let likeModel = new LikeModel()
 export default {
   data() {
     return {
@@ -23,7 +25,11 @@ export default {
   },
   methods: {
     onLike(event) {
-      console.log(event)
+      likeModel.like({
+        like: event.like,
+        art_id: this.classic.id,
+        type: this.classic.type
+      })
     }
   },
   mounted() {
@@ -38,7 +44,7 @@ export default {
     //     console.log(res)
     //   }
     // })
-    classic.getLatest(res => {
+    classicModel.getLatest(res => {
       this.classic = res
     })
   }
