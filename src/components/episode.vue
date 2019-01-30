@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>No.</div>
-    <div>{{index}}</div>
+    <div>{{days}}</div>
     <div>|</div>
     <div>{{month}}</div>
     <div>{{year}}</div>
@@ -16,6 +16,11 @@ export default {
     return {
       year: 0,
       month: 0
+    }
+  },
+  computed: {
+    days() {
+      return this.index < 10 ? `0${this.index}` : this.index
     }
   }
 }
