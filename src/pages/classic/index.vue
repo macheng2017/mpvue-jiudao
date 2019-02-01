@@ -1,7 +1,9 @@
 <template>
   <div>
-    <Episode></Episode>
-    <Like :like="classic.like_status" :count="classic.fav_nums" @on-like="onLike"></Like>
+    <div class="header">
+      <Episode :index="classic.index"></Episode>
+      <Like :like="classic.like_status" :count="classic.fav_nums" @on-like="onLike"></Like>
+    </div>
 
     <Movie :img="classic.image" :content="classic.content"></Movie>
   </div>
@@ -56,4 +58,20 @@ export default {
 </script>
 
 <style>
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  border-top: 1px solid #f5f5f5;
+  border-bottom: 1px solid #f5f5f5;
+}
+.header like {
+  margin-top: 10rpx;
+}
+
+.header episode {
+  margin-left: 10rpx;
+}
 </style>

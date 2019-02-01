@@ -45,6 +45,7 @@ export default {
   flex-direction: row;
   padding: 10rpx;
   width: 90rpx;
+  height: 40rpx;
 }
 .container img {
   width: 32rpx;
