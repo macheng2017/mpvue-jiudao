@@ -10,7 +10,13 @@
     </div>
     <Movie :img="classic.image" :content="classic.content"></Movie>
     <div class="navi">
-      <Navi @onLeft="onPrevious" @onRight="onNext" :title="classic.title"></Navi>
+      <Navi
+        @onLeft="onNext"
+        @onRight="onPrevious"
+        :first="first"
+        :latest="latest"
+        :title="classic.title"
+      ></Navi>
     </div>
   </div>
 </template>
@@ -28,7 +34,10 @@ export default {
   data() {
     return {
       classic: {},
-      content: ''
+      latestIndex: 0,
+      content: '',
+      first: false,
+      latest: true
     }
   },
   components: {
@@ -46,10 +55,32 @@ export default {
       })
     },
     onPrevious(event) {
-      console.log('previous')
+      let index = this.classic.index
+      if (index <= 2) {
+        this.first = true
+      }
+      classicModel.getPrevious(index, res => {
+        this.classic = res
+      })
+      this.latest = false
     },
     onNext(event) {
-      console.log('next')
+      let index = this.classic.index
+      if (index >= this.latestIndex) {
+        this.first = false
+        this.latest = true
+      }
+
+      classicModel.getNext(index, res => {
+        this.classic = res
+      })
+    },
+    // 获取最新一期期刊
+    getLatest() {
+      classicModel.getLatest(res => {
+        this.classic = res
+        this.latestIndex = res.index
+      })
     }
   },
   mounted() {
@@ -64,9 +95,7 @@ export default {
     //     console.log(res)
     //   }
     // })
-    classicModel.getLatest(res => {
-      this.classic = res
-    })
+    this.getLatest()
   }
 }
 </script>

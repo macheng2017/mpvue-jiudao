@@ -6,13 +6,10 @@
     <div>{{content}}</div>
   </div>
 </template>
-
 <script>
+import { mixin } from './classic-mixin.js'
 export default {
-  props: {
-    img: String,
-    content: String
-  },
+  mixins: [mixin],
   data() {
     return {}
   },
