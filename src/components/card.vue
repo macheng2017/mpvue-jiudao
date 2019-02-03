@@ -1,12 +1,10 @@
 <template>
   <div>
-    <p class="card">
-      {{text}}
-    </p>
+    <p class="card">{{text}}</p>
   </div>
 </template>
 
-<script>
+<script scoped>
 export default {
   props: ['text']
 }
