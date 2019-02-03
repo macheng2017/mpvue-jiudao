@@ -36,8 +36,8 @@ export default {
       classic: {},
       latestIndex: 0,
       content: '',
-      first: false,
-      latest: true
+      first: true,
+      latest: false
     }
   },
   components: {
@@ -56,9 +56,8 @@ export default {
     },
     onPrevious(event) {
       let index = this.classic.index
-      if (index <= 2) {
-        this.first = true
-      }
+      this.first = classicModel.isFirst(index)
+      this.latest = classicModel.isLatest(index)
       classicModel.getPrevious(index, res => {
         this.classic = res
       })

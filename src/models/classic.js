@@ -7,6 +7,7 @@ class ClassicModel extends Http {
       method: 'GET',
       success: res => {
         callBack(res)
+        this._setLatestIndex(res.index)
       }
     })
   }
@@ -29,6 +30,18 @@ class ClassicModel extends Http {
         callBack(res)
       }
     })
+  }
+  isFirst(index) {
+    return index === 1 ? 1 : 0
+  }
+  isLatest(index) {
+    return index === this._getLatestIndex() - 1 ? 1 : 0
+  }
+  _setLatestIndex(index) {
+    wx.setStorageSync('latest', index)
+  }
+  _getLatestIndex() {
+    return wx.getStorageSync('latest')
   }
 }
 
