@@ -17,19 +17,19 @@ export default {
     return {
       disLeftSrc: '/static/img/triangle.dis@left.png',
       leftSrc: '/static/img/triangle@left.png',
-      disRightSrc: '/static/img/triangle@right.png',
+      disRightSrc: '/static/img/triangle.dis@right.png',
       rightSrc: '/static/img/triangle@right.png'
     }
   },
   methods: {
     onLeft() {
       if (!this.latest) {
-        this.$emit('onLeft', '')
+        this.$emit('onLeft')
       }
     },
     onRight() {
       if (!this.first) {
-        this.$emit('onRight', '')
+        this.$emit('onRight')
       }
     }
   }

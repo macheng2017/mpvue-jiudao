@@ -36,8 +36,8 @@ export default {
       classic: {},
       latestIndex: 0,
       content: '',
-      first: true,
-      latest: false
+      first: false,
+      latest: true
     }
   },
   components: {
@@ -55,22 +55,16 @@ export default {
       })
     },
     onPrevious(event) {
+      this._getPreviousOrNext('previous')
+    },
+    onNext(event) {
+      this._getPreviousOrNext('next')
+    },
+    _getPreviousOrNext(previousOrNext) {
       let index = this.classic.index
       this.first = classicModel.isFirst(index)
       this.latest = classicModel.isLatest(index)
-      classicModel.getPrevious(index, res => {
-        this.classic = res
-      })
-      this.latest = false
-    },
-    onNext(event) {
-      let index = this.classic.index
-      if (index >= this.latestIndex) {
-        this.first = false
-        this.latest = true
-      }
-
-      classicModel.getNext(index, res => {
+      classicModel.getClassic(index, previousOrNext, res => {
         this.classic = res
       })
     },

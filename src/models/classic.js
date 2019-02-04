@@ -12,9 +12,9 @@ class ClassicModel extends Http {
     })
   }
   // 获取当前一期的上一期(默认/初始化显示的是最新一期)
-  getPrevious(index, callBack) {
+  getClassic(index, previousOrNext, callBack) {
     this.request({
-      url: `/classic/${index}/previous`,
+      url: `/classic/${index}/${previousOrNext}`,
       method: 'GET',
       success: res => {
         callBack(res)
@@ -22,17 +22,8 @@ class ClassicModel extends Http {
     })
   }
 
-  getNext(index, callBack) {
-    this.request({
-      url: `/classic/${index}/next`,
-      method: 'GET',
-      success: res => {
-        callBack(res)
-      }
-    })
-  }
   isFirst(index) {
-    return index === 1 ? 1 : 0
+    return index === 2 ? 1 : 0
   }
   isLatest(index) {
     return index === this._getLatestIndex() - 1 ? 1 : 0
