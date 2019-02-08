@@ -5,7 +5,7 @@
         <Episode :index="classic.index"></Episode>
       </div>
       <div class="like">
-        <Like :like="classic.like_status" :count="classic.fav_nums" @on-like="onLike"></Like>
+        <Like :like="like_status" :count="fav_nums" @on-like="onLike"></Like>
       </div>
     </div>
     <Movie :img="classic.image" :content="classic.content"></Movie>
@@ -34,10 +34,10 @@ export default {
   data() {
     return {
       classic: {},
-      latestIndex: 0,
-      content: '',
       first: false,
-      latest: true
+      latest: true,
+      fav_nums: 1,
+      like_status: false
     }
   },
   components: {
@@ -49,7 +49,7 @@ export default {
   methods: {
     onLike(event) {
       likeModel.like({
-        like: event.like,
+        like: event.like, // 用于标注点赞的状态，点赞/取消点赞
         art_id: this.classic.id,
         type: this.classic.type
       })
@@ -66,13 +66,31 @@ export default {
       this.latest = classicModel.isLatest(index)
       classicModel.getClassic(index, previousOrNext, res => {
         this.classic = res
+        this._getUpdateLikeStatus({ type: res.type, art_id: res.id })
       })
+    },
+    // 为了避免缓存影响单独更新like组件的状态
+    _getUpdateLikeStatus(params) {
+      console.log(params)
+      likeModel.getClassicLikeStatus(
+        {
+          type: params.type,
+          art_id: params.art_id
+        },
+        res => {
+          this.fav_nums = res.fav_nums
+          this.like_status = res.like_status
+          console.log('res', '.....')
+        }
+      )
     },
     // 获取最新一期期刊
     getLatest() {
       classicModel.getLatest(res => {
         this.classic = res
         this.latestIndex = res.index
+        this.fav_nums = res.fav_nums
+        this.like_status = res.like_status
       })
     }
   },
