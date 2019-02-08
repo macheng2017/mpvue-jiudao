@@ -24,7 +24,6 @@ class ClassicModel extends Http {
         ? this._getKey(index + 1)
         : this._getKey(index - 1)
     let val = wx.getStorageSync(key)
-    console.log('object111', val)
     if (!val) {
       console.log(key)
       this.request({

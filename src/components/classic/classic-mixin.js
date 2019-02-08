@@ -1,7 +1,8 @@
 let mixin = {
   props: {
     img: String,
-    content: String
+    content: String,
+    hidden: Boolean
   }
 }
 

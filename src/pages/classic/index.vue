@@ -8,7 +8,14 @@
         <Like :like="like_status" :count="fav_nums" @on-like="onLike"></Like>
       </div>
     </div>
-    <Movie :img="classic.image" :content="classic.content"></Movie>
+    <Movie :hidden="classic.type === 100" :img="classic.image" :content="classic.content"></Movie>
+    <Music
+      :hidden="classic.type === 200"
+      :img="classic.image"
+      :content="classic.content"
+      :src="classic.url"
+    ></Music>
+    <Essay :hidden="classic.type === 300" :img="classic.image" :content="classic.content"></Essay>
     <div class="navi">
       <Navi
         @onLeft="onNext"
@@ -24,6 +31,8 @@
 <script>
 import Like from '@/components/like'
 import Movie from '@/components/classic/movie'
+import Music from '@/components/classic/music'
+import Essay from '@/components/classic/essay'
 import Episode from '@/components/Episode'
 import Navi from '@/components/navi'
 import ClassicModel from '@/models/classic.js'
@@ -43,6 +52,8 @@ export default {
   components: {
     Like,
     Movie,
+    Music,
+    Essay,
     Episode,
     Navi
   },
@@ -71,7 +82,6 @@ export default {
     },
     // 为了避免缓存影响单独更新like组件的状态
     _getUpdateLikeStatus(params) {
-      console.log(params)
       likeModel.getClassicLikeStatus(
         {
           type: params.type,
@@ -80,7 +90,6 @@ export default {
         res => {
           this.fav_nums = res.fav_nums
           this.like_status = res.like_status
-          console.log('res', '.....')
         }
       )
     },

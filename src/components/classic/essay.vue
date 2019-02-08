@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div v-if="hidden" class="container">
     <img :src="img" alt>
     <img :src="palySrc" alt>
     <img src="/static/img/essay@tag.png" alt>
@@ -19,5 +19,6 @@ export default {
 }
 </script>
 <style scoped>
+@import url('./common.css');
 </style>
 
