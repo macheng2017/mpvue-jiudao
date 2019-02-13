@@ -33,11 +33,35 @@ export default {
       }
     }
   },
-  created() {
-    console.log('object')
-  },
   attached() {
     console.log('attached')
+  },
+  detached() {
+    console.log('detached')
+  },
+  created() {
+    console.log('created')
+  },
+  mounted() {
+    console.log('mounted')
+  },
+  destroyed() {
+    console.log('destroyed')
+  },
+  onShow() {
+    console.log('onShow')
+  },
+  onLoad() {
+    console.log('onLoad')
+  },
+  onUnload() {
+    console.log('onUnload')
+  },
+  onHide() {
+    console.log('onHidle')
+  },
+  onLaunch() {
+    console.log('launch')
   }
 }
 </script>

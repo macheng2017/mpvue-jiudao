@@ -11,7 +11,6 @@ class LikeModel extends Http {
     })
   }
   getClassicLikeStatus(params, sCallback) {
-    console.log(params)
     this.request({
       url: `/classic/${params.type}/${params.art_id}/favor`,
       success: sCallback
