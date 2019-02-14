@@ -14,6 +14,7 @@
       :img="classic.image"
       :content="classic.content"
       :src="classic.url"
+      @playMus="playMus"
     ></Music>
     <Essay :hidden="classic.type === 300" :img="classic.image" :content="classic.content"></Essay>
     <div class="navi">
@@ -37,6 +38,7 @@ import Episode from '@/components/Episode'
 import Navi from '@/components/navi'
 import ClassicModel from '@/models/classic.js'
 import LikeModel from '@/models/like.js'
+import { mapState, mapMutations } from 'vuex'
 let classicModel = new ClassicModel()
 let likeModel = new LikeModel()
 export default {
@@ -49,6 +51,9 @@ export default {
       like_status: false
     }
   },
+  computed: {
+    ...mapState(['count', 'musicState'])
+  },
   components: {
     Like,
     Movie,
@@ -58,6 +63,7 @@ export default {
     Navi
   },
   methods: {
+    ...mapMutations(['musicSrcChange']),
     onLike(event) {
       likeModel.like({
         like: event.like, // 用于标注点赞的状态，点赞/取消点赞
@@ -70,6 +76,12 @@ export default {
     },
     onNext(event) {
       this._getPreviousOrNext('next')
+    },
+    playMus(event) {
+      console.log('playMusic')
+      console.log(event)
+      // this.musicSrcChange({ src: event.musicSrc })
+      console.log(this.musicState)
     },
     _getPreviousOrNext(previousOrNext) {
       let index = this.classic.index

@@ -7,7 +7,8 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    count: 0
+    count: 0,
+    musicState: ''
   },
   mutations: {
     increment: state => {
@@ -17,16 +18,19 @@ const store = new Vuex.Store({
     decrement: state => {
       const obj = state
       obj.count -= 1
-    }
-  },
-  actions: {
-    increment: ({ commit }) => {
-      commit('increment')
     },
-    decrement: ({ commit }) => {
-      commit('decrement')
+    musicSrcChange: (state, playMus) => {
+      state.musicState = playMus.src
     }
   }
+  // actions: {
+  //   increment: ({ commit }) => {
+  //     commit('increment')
+  //   },
+  //   decrement: ({ commit }) => {
+  //     commit('decrement')
+  //   }
+  // }
 })
 
 export default store

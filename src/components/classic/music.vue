@@ -8,6 +8,7 @@
 </template>
 <script>
 import { mixin } from './classic-mixin.js'
+import { mapState, mapMutations } from 'vuex'
 let mMgr = wx.getBackgroundAudioManager()
 export default {
   mixins: [mixin],
@@ -21,47 +22,24 @@ export default {
       playing: false
     }
   },
+  computed: {
+    ...mapState(['musicState'])
+  },
   methods: {
+    ...mapMutations(['musicSrcChange']),
     onPlay() {
       console.log('onPlay')
       this.playing = this.playing ? 0 : 1
       if (this.playing) {
         mMgr.src = this.src
         mMgr.title = '测试'
+        this.$emit('playMus', { musicSrc: this.src })
+        // 将播放状态(src)保存到vuex state中
+        this.musicSrcChange({ src: this.src })
       } else {
         mMgr.pause()
       }
     }
-  },
-  attached() {
-    console.log('attached')
-  },
-  detached() {
-    console.log('detached')
-  },
-  created() {
-    console.log('created')
-  },
-  mounted() {
-    console.log('mounted')
-  },
-  destroyed() {
-    console.log('destroyed')
-  },
-  onShow() {
-    console.log('onShow')
-  },
-  onLoad() {
-    console.log('onLoad')
-  },
-  onUnload() {
-    console.log('onUnload')
-  },
-  onHide() {
-    console.log('onHidle')
-  },
-  onLaunch() {
-    console.log('launch')
   }
 }
 </script>
