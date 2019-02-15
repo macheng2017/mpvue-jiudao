@@ -1,7 +1,7 @@
 <template>
   <div v-if="hidden" class="container">
     <img class="music-img" :src="img">
-    <img class="play-img" @click="onPlay" :src="playing?pauseSrc:playSrc">
+    <img class="play-img" @click="onPlay" :src="playing ? pauseSrc : playSrc">
     <img class="tag" src="/static/img/music@tag.png">
     <div class="content">{{content}}</div>
   </div>
@@ -39,6 +39,21 @@ export default {
       } else {
         mMgr.pause()
       }
+    },
+    _recoverStatus() {
+      if (mMgr.src !== undefined) {
+        if (this.src === mMgr.src) {
+          this.playing = true
+        } else {
+          this.playing = false
+        }
+      }
+    }
+  },
+  // 使用侦听函数watch,检测切换音乐
+  watch: {
+    src(newSrc, oldSrc) {
+      this._recoverStatus()
     }
   }
 }
