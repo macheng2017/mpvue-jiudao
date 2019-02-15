@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/classic/main",
-    "pages/index/main",
-    "pages/logs/main",
+    "pages/book/main",
+    "pages/my/main",
     "pages/counter/main"
   ],
   "window": {
@@ -10,5 +10,30 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#000",
+    "backgroundColor": "#fff",
+    "color": "#c7c7c7",
+    "list": [
+      {
+        "pagePath": "pages/classic/main",
+        "iconPath": "/static/img/tab/classic.png",
+        "selectedIconPath": "/static/img/tab/classic@highlight.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/book/main",
+        "iconPath": "/static/img/tab/book.png",
+        "selectedIconPath": "/static/img/tab/book@highlight.png",
+        "text": "读书"
+      },
+      {
+        "pagePath": "pages/my/main",
+        "iconPath": "/static/img/tab/my.png",
+        "selectedIconPath": "/static/img/tab/my@highlight.png",
+        "text": "我的"
+      }
+    ]
   }
 }
