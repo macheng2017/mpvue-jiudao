@@ -8,17 +8,10 @@ const tips = {
 class Http {
   request(url, data = {}, method = 'GET') {
     return new Promise((resolve, reject) => {
-      this._request(url, data, method, {
-        success: res => {
-          resolve(res)
-        },
-        fail: error => {
-          reject(error)
-        }
-      })
+      this._request(url, resolve, reject, data, method)
     })
   }
-  _request(url, data = {}, method = 'GET', callBack) {
+  _request(url, resolve, reject, data = {}, method = 'GET') {
     wx.request({
       url: config.base_url + url,
       method: method,
@@ -29,14 +22,16 @@ class Http {
       success: res => {
         let code = res.statusCode.toString()
         if (code.startsWith('2')) {
-          callBack.success(res.data)
+          resolve(res.data)
           // 这种写法等同于 if(params.success){...}
         } else {
+          reject()
           let errorCode = res.data.error_code
           this._showError(errorCode)
         }
       },
       fail: err => {
+        reject(err)
         console.log(err)
         this._showError(1)
       }
