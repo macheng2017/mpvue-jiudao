@@ -3,13 +3,28 @@
 </template>
 
 <script>
+import BookModel from '@/models/book'
+const bookModel = new BookModel()
 export default {
   data() {
     return {}
   },
   components: {},
-  methods: {},
-  mounted() {}
+  methods: {
+    _getHotList() {
+      const hotList = bookModel.getHotList()
+      hotList
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+  },
+  mounted() {
+    this._getHotList()
+  }
 }
 </script>
 

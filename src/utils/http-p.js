@@ -6,7 +6,7 @@ const tips = {
   3000: '未知错误'
 }
 class Http {
-  request(url, data = {}, method = 'GET') {
+  request({ url, data = {}, method = 'GET' }) {
     return new Promise((resolve, reject) => {
       this._request(url, resolve, reject, data, method)
     })
@@ -14,19 +14,18 @@ class Http {
   _request(url, resolve, reject, data = {}, method = 'GET') {
     wx.request({
       url: config.base_url + url,
-      method: method,
-      data: data,
+      method,
+      data,
       header: {
         appkey: config.appkey
       },
       success: res => {
-        let code = res.statusCode.toString()
+        const code = res.statusCode.toString()
         if (code.startsWith('2')) {
           resolve(res.data)
-          // 这种写法等同于 if(params.success){...}
         } else {
           reject()
-          let errorCode = res.data.error_code
+          const errorCode = res.data.error_code
           this._showError(errorCode)
         }
       },
@@ -41,8 +40,9 @@ class Http {
     if (!errorCode) {
       errorCode = 1
     }
+    const tip = tips[errorCode]
     wx.showToast({
-      title: tips[errorCode],
+      title: tip || tips[1],
       icon: 'none',
       duration: 2000
     })
