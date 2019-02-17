@@ -36,8 +36,8 @@ import Music from '@/components/classic/music'
 import Essay from '@/components/classic/essay'
 import Episode from '@/components/Episode'
 import Navi from '@/components/navi'
-import ClassicModel from '@/models/classic.js'
-import LikeModel from '@/models/like.js'
+import ClassicModel from '@/models/classic'
+import LikeModel from '@/models/like'
 
 let classicModel = new ClassicModel()
 let likeModel = new LikeModel()

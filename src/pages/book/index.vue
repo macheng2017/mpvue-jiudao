@@ -1,24 +1,33 @@
 <template>
-  <div class="container"></div>
+  <div class="container">
+    <div class="book" v-for="(book,index) in books" :key="index">
+      <Book :book="book"></Book>
+    </div>
+  </div>
 </template>
 
 <script>
 import BookModel from '@/models/book'
+import Book from '@/components/book'
 const bookModel = new BookModel()
 export default {
   data() {
-    return {}
+    return {
+      books: []
+    }
   },
-  components: {},
+  components: {
+    Book
+  },
   methods: {
     _getHotList() {
       const hotList = bookModel.getHotList()
       hotList
         .then(res => {
-          console.log(res)
+          this.books = res
         })
         .catch(err => {
-          console.log(err)
+          console.log(err, '错误')
         })
     }
   },
@@ -31,27 +40,11 @@ export default {
 <style>
 .container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.header {
-  width: 100%;
-  display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  height: 100rpx;
-  border-top: 1px solid #f5f5f5;
-  border-bottom: 1px solid #f5f5f5;
+  flex-wrap: wrap;
 }
-.like {
-  margin-top: 10rpx;
-}
-.episode {
-  margin-left: 5rpx;
-}
-.navi {
-  position: absolute;
-  bottom: 40rpx;
+.book {
+  margin: 60rpx;
 }
 </style>
