@@ -1,20 +1,5 @@
 <template>
-  <div class="container">
-    <div class="header">
-      <div class="box">
-        <img src="/static/img/icon/search.png">
-        <div>搜索数据</div>
-      </div>
-    </div>
-    <div class="sub-container">
-      <img src="/static/img/book/quality.png" class="head-img">
-      <div class="book-container">
-        <div class="book" v-for="(book,index) in books" :key="index">
-          <Book :book="book"></Book>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="container">bookdetail</div>
 </template>
 
 <script>

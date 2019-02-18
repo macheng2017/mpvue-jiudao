@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div @click="onTap(book.id)" class="container">
     <img :src="book.image">
     <div class="description">
       <div class="title">{{book.title}}</div>
@@ -13,7 +13,15 @@
 
 <script scoped>
 export default {
-  props: ['book']
+  props: ['book'],
+  methods: {
+    onTap(id, event) {
+      console.log(id, event)
+      wx.navigateTo({
+        url: `/pages/bookDetail/main?pid=${id}`
+      })
+    }
+  }
 }
 </script>
 
