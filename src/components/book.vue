@@ -1,5 +1,5 @@
 <template>
-  <div @click="onTap(book.id)" class="container">
+  <div @click="onTap($event,book.id)" class="container">
     <img :src="book.image">
     <div class="description">
       <div class="title">{{book.title}}</div>
@@ -15,10 +15,10 @@
 export default {
   props: ['book'],
   methods: {
-    onTap(id, event) {
-      console.log(id, event)
+    onTap(event, id) {
+      // console.log(event, id)
       wx.navigateTo({
-        url: `/pages/bookDetail/main?pid=${id}`
+        url: `/pages/bookDetail/main?bid=${id}`
       })
     }
   }

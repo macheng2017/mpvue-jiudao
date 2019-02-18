@@ -1,96 +1,88 @@
 <template>
-  <div class="container">bookdetail</div>
+  <div class="container">
+    <div class="head">
+      <img :src="book.image" alt>
+      <div class="title">{{book.title}}</div>
+      <div class="author">{{book.author}}</div>
+    </div>
+    <div class="sub-container">
+      <div class="headline">短评</div>
+    </div>
+  </div>
 </template>
 
 <script>
 import BookModel from '@/models/book'
-import Book from '@/components/book'
 const bookModel = new BookModel()
 export default {
   data() {
     return {
-      books: []
+      // books: [],
+      comments: [],
+      book: {},
+      likeStatus: false,
+      likeCount: 0
     }
   },
-  components: {
-    Book
-  },
+  components: {},
   methods: {
-    _getHotList() {
-      const hotList = bookModel.getHotList()
-      hotList
-        .then(res => {
-          this.books = res
-        })
-        .catch(err => {
-          console.log(err, '错误')
-        })
+    async getBooksData(bid) {
+      this.book = await bookModel.getDetail(bid)
+      this.comments = await bookModel.getComments(bid)
+      const like = await bookModel.getLikeStatus(bid)
+      this.likeStatus = like.like_status
+      this.likeCount = like.fav_nums
     }
   },
   mounted() {
-    this._getHotList()
+    const bid = this.$root.$mp.query.bid
+    this.getBooksData(bid)
   }
 }
 </script>
 
 <style>
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: #f5f5f5;
   width: 100%;
 }
-.sub-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f5f5f5;
-  margin-top: 100rpx;
-}
-.header {
-  position: fixed;
+
+.head {
   background-color: #fff;
-  height: 100rpx;
-  width: 100%;
-  border-top: 1px solid #f5f5f5;
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 3px 0 #e3e3e3;
-  z-index: 99;
 }
-.box {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50px;
-  background-color: #f5f5f5;
-  height: 68rpx;
-  width: 700rpx;
+.title {
+  color: #2f2f2f;
+  margin-top: 20rpx;
+  font-size: 38rpx;
+  font-weight: 600;
+}
+.author {
+  font-size: 28rpx;
   color: #999;
 }
-.head-img {
-  width: 106rpx;
-  height: 34rpx;
-  margin-top: 40rpx;
+.head img {
+  width: 200rpx;
+  height: 300rpx;
+  box-shadow: 2px 2px 3px #e3e3e3;
 }
-.box img {
-  margin-right: 10px;
-  width: 14px;
-  height: 14px;
-  margin-bottom: -2px;
-}
-.book-container {
+.sub-container {
+  width: 690rpx;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
-  flex-wrap: wrap;
-  padding: 0 90rpx 0 90rpx;
+  margin-top: 30rpx;
+  background-color: #fff;
+  padding: 30rpx;
 }
-.book {
-  margin-bottom: 10rpx;
+.headline {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #2f2f2f;
+  margin-bottom: 20rpx;
 }
 </style>
