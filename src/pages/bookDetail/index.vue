@@ -48,7 +48,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style >
 .container {
   background-color: #f5f5f5;
   width: 100%;
@@ -92,12 +92,20 @@ export default {
   color: #2f2f2f;
   margin-bottom: 20rpx;
 }
-.comment-container {
+/* .comment-container {
   display: inline-flex;
   flex-direction: row;
   flex-wrap: wrap;
-}
+} */
 .tag {
+  display: inline-flex;
+  flex-direction: row;
   margin-right: 10rpx;
+}
+.tag:nth-child(1) > div {
+  background-color: #fffbdd;
+}
+.tag:nth-child(2) > div {
+  background-color: #eefbff;
 }
 </style>
