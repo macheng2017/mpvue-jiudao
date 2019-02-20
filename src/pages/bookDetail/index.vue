@@ -7,12 +7,18 @@
     </div>
     <div class="sub-container">
       <div class="headline">短评</div>
+      <div class="comment-container">
+        <div class="tag" v-for="(item, index) in comments.comments" :key="index">
+          <Tag :text="item.content"></Tag>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import BookModel from '@/models/book'
+import Tag from '@/components/tag'
 const bookModel = new BookModel()
 export default {
   data() {
@@ -24,7 +30,7 @@ export default {
       likeCount: 0
     }
   },
-  components: {},
+  components: { Tag },
   methods: {
     async getBooksData(bid) {
       this.book = await bookModel.getDetail(bid)
@@ -32,6 +38,7 @@ export default {
       const like = await bookModel.getLikeStatus(bid)
       this.likeStatus = like.like_status
       this.likeCount = like.fav_nums
+      console.log('comments', this.comments)
     }
   },
   mounted() {
@@ -41,7 +48,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .container {
   background-color: #f5f5f5;
   width: 100%;
@@ -84,5 +91,13 @@ export default {
   font-weight: 600;
   color: #2f2f2f;
   margin-bottom: 20rpx;
+}
+.comment-container {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.tag {
+  margin-right: 10rpx;
 }
 </style>
