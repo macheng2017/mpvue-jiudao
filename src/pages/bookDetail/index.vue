@@ -8,8 +8,10 @@
     <div class="sub-container">
       <div class="headline">短评</div>
       <div class="comment-container">
-        <div class="tag" v-for="(item, index) in comments.comments" :key="index">
-          <Tag :text="item.content"></Tag>
+        <div class="tag" v-for="(item, index) in comments" :key="index">
+          <Tag :text="item.content">
+            <div slot="after">+{{item.nums}}</div>
+          </Tag>
         </div>
       </div>
     </div>
@@ -27,18 +29,19 @@ export default {
       comments: [],
       book: {},
       likeStatus: false,
-      likeCount: 0
+      likeCount: 0,
+      nums: ''
     }
   },
   components: { Tag },
   methods: {
     async getBooksData(bid) {
       this.book = await bookModel.getDetail(bid)
-      this.comments = await bookModel.getComments(bid)
+      this.comments = (await bookModel.getComments(bid)).comments
       const like = await bookModel.getLikeStatus(bid)
       this.likeStatus = like.like_status
       this.likeCount = like.fav_nums
-      console.log('comments', this.comments)
+      this.nums = console.log('comments', this.comments)
     }
   },
   mounted() {

@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div>{{text}}</div>
+    <slot name="after"></slot>
   </div>
 </template>
 
