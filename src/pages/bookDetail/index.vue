@@ -9,9 +9,7 @@
       <div class="headline">短评</div>
       <div class="comment-container">
         <div class="tag" v-for="(item, index) in comments" :key="index">
-          <Tag :text="item.content">
-            <div slot="after">+{{item.nums}}</div>
-          </Tag>
+          <Tag :text="item.content" :count="item.nums"></Tag>
         </div>
       </div>
     </div>
@@ -29,8 +27,7 @@ export default {
       comments: [],
       book: {},
       likeStatus: false,
-      likeCount: 0,
-      nums: ''
+      likeCount: 0
     }
   },
   components: { Tag },

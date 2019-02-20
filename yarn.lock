@@ -3515,9 +3515,10 @@ move-concurrently@^1.0.1:
     rimraf "^2.5.4"
     run-queue "^1.0.3"
 
-mpvue-loader@^1.1.2:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/mpvue-loader/-/mpvue-loader-1.1.4.tgz#3eee4b8473673c15c0ea5dca6c3cbfaac03699e4"
+mpvue-loader@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/mpvue-loader/-/mpvue-loader-2.0.0.tgz#aba499d5fccfee7dcc996344bf8fb65e3ea69046"
+  integrity sha512-XocruMxnCWFgGaOA2mwyd48gsHGCXWwN7akkh5zmCy9cd0M46ECo5/Ca48MKz4yZSdfA0yqZC+F9LlP3cNYmDA==
   dependencies:
     babelon "^1.0.5"
     consolidate "^0.14.0"
@@ -3539,9 +3540,10 @@ mpvue-loader@^1.1.2:
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.5.3"
 
-mpvue-template-compiler@^1.0.11:
-  version "1.0.18"
-  resolved "https://registry.yarnpkg.com/mpvue-template-compiler/-/mpvue-template-compiler-1.0.18.tgz#3c066fc5ac09b953c7be0dbab8b9f7fda87c74ef"
+mpvue-template-compiler@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/mpvue-template-compiler/-/mpvue-template-compiler-2.0.2.tgz#80db9b80f6a9313e3e358a9548edabef5234cf52"
+  integrity sha512-skF137d6THRwoGLVWly/h135SmG6becKsVrojbe338nGZ7U/BjZJXD7EWDOmwi56VwCgdXcDXPq1AhsKKbBWDg==
   dependencies:
     de-indent "^1.0.2"
     he "^1.1.0"
@@ -3550,9 +3552,10 @@ mpvue-webpack-target@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/mpvue-webpack-target/-/mpvue-webpack-target-1.0.3.tgz#07ac9f89fdf0aabfb6bd079c7f068c94666006a9"
 
-mpvue@^1.0.11:
-  version "1.0.18"
-  resolved "https://registry.yarnpkg.com/mpvue/-/mpvue-1.0.18.tgz#f784e5659641b6b338f12b6dc3dbc2c4879287f6"
+mpvue@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/mpvue/-/mpvue-2.0.2.tgz#f4fa81f10792dba497be150df718e7f5ad41a9ed"
+  integrity sha512-UPRxaCu0Gsr+7xFTi4qF+h8/CDo2jW8ZgtLPi7INMDAAeomm99gB1EGQXiGntHzTuQ6q7pXTG10FNIUA6LhWoA==
 
 ms@2.0.0:
   version "2.0.0"
@@ -5561,16 +5564,18 @@ webpack-merge@^4.1.0:
   dependencies:
     lodash "^4.17.5"
 
-webpack-mpvue-asset-plugin@^0.1.2:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/webpack-mpvue-asset-plugin/-/webpack-mpvue-asset-plugin-0.1.3.tgz#76d726b38dad815e5ad0fadea19d8652ba6a3f31"
+webpack-mpvue-asset-plugin@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/webpack-mpvue-asset-plugin/-/webpack-mpvue-asset-plugin-2.0.0.tgz#8e831f4e1cdec4115bbc8932ad5d1f5d37f0ffa4"
+  integrity sha512-CN/mTLnFowLJYrkwXNO+28PDDpIBU1VrahA/6Jj/DK2TGKp7MPVGJlsrnz4JXd2Br0ShRMJvP8/cUGc6QSEtNw==
   dependencies:
     relative "^3.0.2"
     upath "^1.1.0"
 
-webpack-mpvue-vendor-plugin@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/webpack-mpvue-vendor-plugin/-/webpack-mpvue-vendor-plugin-0.0.1.tgz#1c261daedc9aafefa9d4293ea13d5a4868629e14"
+webpack-mpvue-vendor-plugin@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/webpack-mpvue-vendor-plugin/-/webpack-mpvue-vendor-plugin-2.0.0.tgz#a6ea1450d6a9e738ed5df48909c478586b1f8075"
+  integrity sha512-zOho4EAPuYgY6NMfFkcZDEV6hmHLB8R/+sTuLtA61zo1NowdoJeflEFdUHflY7b1+IIfetzInBl/IvtXWWdWfg==
 
 webpack-sources@^1.0.1, webpack-sources@^1.1.0:
   version "1.3.0"

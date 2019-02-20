@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <div>{{text}}</div>
-    <slot name="after"></slot>
+    <div>+{{count}}</div>
   </div>
 </template>
 
 <script scoped>
 export default {
-  props: ['text']
+  props: ['text', 'count']
 }
 </script>
 
