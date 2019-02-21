@@ -9,7 +9,7 @@
       <div class="headline">短评</div>
       <div class="comment-container">
         <div class="tag" v-for="(item, index) in comments" :key="index">
-          <Tag :text="item.content" :count="item.nums"></Tag>
+          <Tag :text="item.content" :count="item.nums" :tag-class="ex-tag"></Tag>
         </div>
       </div>
     </div>
@@ -30,6 +30,7 @@ export default {
       likeCount: 0
     }
   },
+  // externalClasses: ['tag-class'],
   components: { Tag },
   methods: {
     async getBooksData(bid) {
@@ -48,7 +49,7 @@ export default {
 }
 </script>
 
-<style >
+<style>
 .container {
   background-color: #f5f5f5;
   width: 100%;
@@ -100,7 +101,7 @@ export default {
 .tag {
   display: inline-flex;
   flex-direction: row;
-  margin-right: 10rpx;
+  margin-right: 5rpx;
 }
 .tag:nth-child(1) > div {
   background-color: #fffbdd;
@@ -108,4 +109,7 @@ export default {
 .tag:nth-child(2) > div {
   background-color: #eefbff;
 }
+/* .ex-tag {
+  background-color: aqua !important;
+} */
 </style>

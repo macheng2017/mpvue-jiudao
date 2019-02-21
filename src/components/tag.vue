@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div>{{text}}</div>
+  <div class="container tag-class">
+    <div class="text">{{text}}</div>
     <div>+{{count}}</div>
   </div>
 </template>
@@ -22,5 +22,11 @@ export default {
   justify-content: center;
   align-items: center;
   font-size: 28rpx;
+}
+.text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 250rpx;
 }
 </style>
