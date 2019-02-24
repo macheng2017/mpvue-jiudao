@@ -27,6 +27,6 @@ export default {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  max-width: 250rpx;
+  max-width: 240rpx;
 }
 </style>
