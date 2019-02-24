@@ -13,12 +13,17 @@
         </div>
       </div>
     </div>
+    <div class="sub-container">
+      <div class="headline">内容</div>
+      <div class="content">{{summary}}</div>
+    </div>
   </div>
 </template>
 
 <script>
 import BookModel from '@/models/book'
 import Tag from '@/components/tag'
+
 const bookModel = new BookModel()
 export default {
   data() {
@@ -28,8 +33,19 @@ export default {
       book: {},
       likeStatus: false,
       likeCount: 0
+      // summary: ''
     }
   },
+  computed: {
+    summary() {
+      console.log('_formatContent')
+      let summary = this.book.summary
+      const reg = new RegExp('\\\\n', 'g')
+
+      return summary.replace(reg, '\n')
+    }
+  },
+
   components: { Tag },
   methods: {
     async getBooksData(bid) {
@@ -38,8 +54,11 @@ export default {
       const like = await bookModel.getLikeStatus(bid)
       this.likeStatus = like.like_status
       this.likeCount = like.fav_nums
-      this.nums = console.log('comments', this.comments)
-    }
+      // this.nums = console.log('comments', this.comments)
+      this._formatContent()
+      console.log(this.summary)
+    },
+    _formatContent() {}
   },
   mounted() {
     const bid = this.$root.$mp.query.bid
@@ -107,5 +126,8 @@ export default {
 }
 .tag:nth-child(2) > div {
   background-color: #eefbff;
+}
+.content {
+  text-indent: 100rpx;
 }
 </style>
