@@ -8,6 +8,7 @@
     <div class="sub-container">
       <div class="headline">短评</div>
       <div class="comment-container">
+        <div v-if="!comments">暂无标签</div>
         <div class="tag" v-for="(item, index) in comments" :key="index">
           <Tag :text="item.content" :count="item.nums" :tag-class="ex-tag"></Tag>
         </div>
@@ -50,15 +51,16 @@
     <!-- 隐藏层 -->
     <div class="posting-container" v-if="posting">
       <div class="posting-header">
-        <div>标签</div>
+        <div v-if="!comments">暂无标签</div>
+        <div v-else>标签</div>
         <div class="cancel" @click="onCancel">取消</div>
       </div>
       <div class="comment-container">
         <div class="tag" v-for="(item, index) in comments" :key="index">
-          <Tag :text="item.content" :count="item.nums" :tag-class="ex-tag"></Tag>
+          <Tag :text="item.content" :count="item.nums" @onTapping="onPost" :tag-class="ex-tag"></Tag>
         </div>
       </div>
-      <input type="text" placeholder="最多输入12个字" class="post">
+      <input @confirm="onPost" type="text" placeholder="最多输入12个字" class="post">
     </div>
     <Mask v-if="posting"/>
   </div>
@@ -70,7 +72,9 @@ import Tag from '@/components/tag'
 import Mask from '@/components/mask'
 import Like from '@/components/like'
 import LikeModel from '@/models/like'
-let likeModel = new LikeModel()
+import CommentModel from '@/models/comment'
+const likeModel = new LikeModel()
+const commentModel = new CommentModel()
 
 const bookModel = new BookModel()
 export default {
@@ -89,6 +93,7 @@ export default {
   components: { Tag, Like, Mask },
   methods: {
     async getBooksData(bid) {
+      wx.showLoading()
       this.book = await bookModel.getDetail(bid)
       this.comments = (await bookModel.getComments(bid)).comments
       const like = await bookModel.getLikeStatus(bid)
@@ -96,10 +101,11 @@ export default {
       this.likeCount = like.fav_nums
       // this.nums = console.log('comments', this.comments)
       this._formatContent()
-      console.log(this.summary)
+      // console.log(this.summary)
+      wx.hideLoading()
     },
     _formatContent() {
-      console.log('_formatContent')
+      // console.log('_formatContent')
       let summary = this.book.summary
       const reg = new RegExp('\\\\n', 'g')
       this.summary = summary.replace(reg, '\n')
@@ -110,6 +116,30 @@ export default {
         art_id: this.book.id,
         type: 400
       })
+    },
+    async onPost(event) {
+      let text = event.text
+      // text = this.commentText
+      // console.log(event)
+      // 由于标签和input共用了一个事件函数,使用event.type 判断到底value来自哪里
+      if (event.type === 'confirm') {
+        text = event.target.value
+      }
+      if (!text) {
+        return
+      }
+      let res = ''
+      this.posting = false
+      if (text.trim().length > 0 && text.length < 12) {
+        res = await commentModel.pushComment(this.book.id, text)
+        this.comments.unshift({ content: text, nums: 1 })
+      }
+      wx.showToast({
+        title: '+1',
+        icon: 'none'
+      })
+
+      console.log(res)
     },
     onCancel() {
       console.log('onCancel')
