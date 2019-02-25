@@ -1,11 +1,13 @@
 <template>
   <div class="container">
-    <div class="header">
+    <div class="header" @click="onSearch">
       <div class="box">
         <img src="/static/img/icon/search.png">
         <div>搜索数据</div>
       </div>
     </div>
+    <Search v-if="flag"></Search>
+    <Mask v-if="flag"></Mask>
     <div class="sub-container">
       <img src="/static/img/book/quality.png" class="head-img">
       <div class="book-container">
@@ -20,15 +22,20 @@
 <script>
 import BookModel from '@/models/book'
 import Book from '@/components/book'
+import Search from '@/components/search'
+import Mask from '@/components/mask'
 const bookModel = new BookModel()
 export default {
   data() {
     return {
-      books: []
+      books: [],
+      flag: false
     }
   },
   components: {
-    Book
+    Book,
+    Search,
+    Mask
   },
   methods: {
     _getHotList() {
@@ -40,6 +47,9 @@ export default {
         .catch(err => {
           console.log(err, '错误')
         })
+    },
+    onSearch() {
+      this.flag = true
     }
   },
   mounted() {
