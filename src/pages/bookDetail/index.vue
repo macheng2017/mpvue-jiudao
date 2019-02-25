@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class="post-container">
-      <div bind:tap="onFakePost" class="post-fake">
+      <div @click="onFakePost" class="post-fake">
         <div>输入短评</div>
       </div>
       <div class="like-container">
@@ -45,6 +45,16 @@
           <Like :like="likeStatus" :count="likeCount" @on-like="onLike"></Like>
         </div>
       </div>
+    </div>
+
+    <!-- 隐藏层 -->
+    <div class="posting-container">
+      <div class="post-header">
+        <div>标签</div>
+        <div class="cancel">取消</div>
+      </div>
+      <div class="comment-container"></div>
+      <input type="text" placeholder="最多输入12个字" class="post">
     </div>
   </div>
 </template>
@@ -65,7 +75,8 @@ export default {
       book: {},
       likeStatus: false,
       likeCount: 0,
-      summary: ''
+      summary: '',
+      posting: false
     }
   },
   // externalClasses: ['tag-class'],
@@ -93,6 +104,9 @@ export default {
         art_id: this.book.id,
         type: 400
       })
+    },
+    onFakePost(event) {
+      this.posting = true
     }
   },
   mounted() {
@@ -224,5 +238,26 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.post-container {
+  bottom: 0;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  width: 100%;
+  z-index: 999;
+}
+.post-header {
+  width: 100%;
+  border-bottom: 1px solid #f5f5f5;
+  border-top: 1px solid #f5f5f5;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 </style>
