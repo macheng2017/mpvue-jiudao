@@ -60,12 +60,14 @@
       </div>
       <input type="text" placeholder="最多输入12个字" class="post">
     </div>
+    <Mask v-if="posting"/>
   </div>
 </template>
 
 <script>
 import BookModel from '@/models/book'
 import Tag from '@/components/tag'
+import Mask from '@/components/mask'
 import Like from '@/components/like'
 import LikeModel from '@/models/like'
 let likeModel = new LikeModel()
@@ -84,7 +86,7 @@ export default {
     }
   },
   // externalClasses: ['tag-class'],
-  components: { Tag, Like },
+  components: { Tag, Like, Mask },
   methods: {
     async getBooksData(bid) {
       this.book = await bookModel.getDetail(bid)
