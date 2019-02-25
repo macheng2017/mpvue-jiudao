@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <div class="post-container">
+    <div class="post-container" v-if="!posting">
       <div @click="onFakePost" class="post-fake">
         <div>输入短评</div>
       </div>
@@ -48,12 +48,16 @@
     </div>
 
     <!-- 隐藏层 -->
-    <div class="posting-container">
-      <div class="post-header">
+    <div class="posting-container" v-if="posting">
+      <div class="posting-header">
         <div>标签</div>
-        <div class="cancel">取消</div>
+        <div class="cancel" @click="onCancel">取消</div>
       </div>
-      <div class="comment-container"></div>
+      <div class="comment-container">
+        <div class="tag" v-for="(item, index) in comments" :key="index">
+          <Tag :text="item.content" :count="item.nums" :tag-class="ex-tag"></Tag>
+        </div>
+      </div>
       <input type="text" placeholder="最多输入12个字" class="post">
     </div>
   </div>
@@ -104,6 +108,10 @@ export default {
         art_id: this.book.id,
         type: 400
       })
+    },
+    onCancel() {
+      console.log('onCancel')
+      this.posting = false
     },
     onFakePost(event) {
       this.posting = true
@@ -240,7 +248,7 @@ export default {
   align-items: center;
 }
 
-.post-container {
+.posting-container {
   bottom: 0;
   position: fixed;
   display: flex;
@@ -249,8 +257,9 @@ export default {
   background-color: #fff;
   width: 100%;
   z-index: 999;
+  font-size: 28rpx;
 }
-.post-header {
+.posting-header {
   width: 100%;
   border-bottom: 1px solid #f5f5f5;
   border-top: 1px solid #f5f5f5;
@@ -259,5 +268,27 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+.cancel {
+  color: #666;
+}
+.posting-header div {
+  padding: 25rpx;
+}
+.posting-header > div:nth-child(1) {
+  font-size: 28rpx;
+  color: #bbb;
+}
+.posting-container .comment-container {
+  width: 690rpx;
+  padding: 40rpx 30rpx 0 30rpx;
+}
+.post {
+  width: 690rpx;
+  margin: 30rpx auto;
+  height: 56rpx;
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  padding-left: 25rpx;
 }
 </style>
