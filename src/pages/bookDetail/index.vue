@@ -17,25 +17,6 @@
       <div class="headline">内容</div>
       <div class="content">{{summary}}</div>
     </div>
-    <div class="sub-container">
-      <div class="headline">书本信息</div>
-      <div class="detail-container">
-        <div class="vertical description">
-          <text>出版社</text>
-          <text>出版年</text>
-          <text>页数</text>
-          <text>定价</text>
-          <text>装帧</text>
-        </div>
-        <div class="vertical">
-          <div>{{book.publisher}}</div>
-          <div>{{book.pubdate}}</div>
-          <div>{{book.pages}}</div>
-          <div>{{book.price}}</div>
-          <div>{{book.binding}}</div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -51,8 +32,8 @@ export default {
       comments: [],
       book: {},
       likeStatus: false,
-      likeCount: 0,
-      summary: ''
+      likeCount: 0
+      // summary: ''
     }
   },
   computed: {
@@ -71,13 +52,7 @@ export default {
       this._formatContent()
       console.log(this.summary)
     },
-    _formatContent() {
-      console.log('_formatContent')
-      let summary = this.book.summary
-      const reg = new RegExp('\\\\n', 'g')
-
-      this.summary = summary.replace(reg, '\n')
-    }
+    _formatContent() {}
   },
   mounted() {
     const bid = this.$root.$mp.query.bid
@@ -147,24 +122,6 @@ export default {
   background-color: #eefbff;
 }
 .content {
-  text-indent: 56rpx;
-  font-size: 28rpx;
-}
-.detail-container {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin-bottom: 100rpx;
-  font-size: 28rpx;
-  color: #666;
-}
-.vertical {
-  display: flex;
-  flex-direction: column;
-}
-.description {
-  color: #999;
-  margin-right: 30rpx;
+  text-indent: 100rpx;
 }
 </style>
