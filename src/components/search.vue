@@ -6,7 +6,7 @@
         <input placeholder-class="in-bar" placeholder="书籍" class="bar" autofocus="true" type="text">
         <img class="cancel-img" src="/static/img/component/search/cancel.png" alt>
       </div>
-      <div class="cancel">取消</div>
+      <div class="cancel" @click="onTap">取消</div>
     </div>
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
   props: ['text', 'count'],
   methods: {
     onTap(event) {
-      this.$emit('onTapping', { text: this.text })
+      this.$emit('onCancel', { flag: false })
     }
   }
 }
@@ -40,7 +40,7 @@ export default {
   flex-direction: row;
   width: 750rpx;
   align-items: center;
-  z-index: 999;
+  z-index: 99;
 }
 
 .search-container {

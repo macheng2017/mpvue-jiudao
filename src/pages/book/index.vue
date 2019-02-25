@@ -1,14 +1,14 @@
 <template>
   <div class="container">
-    <div class="header" @click="onSearch">
+    <div class="header" @click="onSearch" v-if="!searching">
       <div class="box">
         <img src="/static/img/icon/search.png">
         <div>搜索数据</div>
       </div>
     </div>
-    <Search v-if="flag"></Search>
-    <Mask v-if="flag"></Mask>
-    <div class="sub-container">
+
+    <!-- <Mask v-if="searching"></Mask> -->
+    <div class="sub-container" v-if="!searching">
       <img src="/static/img/book/quality.png" class="head-img">
       <div class="book-container">
         <div class="book" v-for="(book,index) in books" :key="index">
@@ -16,6 +16,7 @@
         </div>
       </div>
     </div>
+    <Search v-if="searching" @onCancel="onCancel"></Search>
   </div>
 </template>
 
@@ -29,7 +30,7 @@ export default {
   data() {
     return {
       books: [],
-      flag: false
+      searching: false
     }
   },
   components: {
@@ -49,7 +50,10 @@ export default {
         })
     },
     onSearch() {
-      this.flag = true
+      this.searching = true
+    },
+    onCancel() {
+      this.searching = false
     }
   },
   mounted() {
@@ -71,6 +75,7 @@ export default {
   align-items: center;
   background-color: #f5f5f5;
   margin-top: 100rpx;
+  /* z-index: -1; */
 }
 .header {
   position: fixed;
