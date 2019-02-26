@@ -1,7 +1,7 @@
 <template>
   <div class="container tag-class" @click="onTap">
     <div class="text">{{text}}</div>
-    <div>+{{count}}</div>
+    <div v-if="count">+{{count}}</div>
   </div>
 </template>
 

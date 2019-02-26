@@ -3,21 +3,75 @@
     <div class="header">
       <div class="search-container">
         <img class="icon" src="/static/img/component/search/search.png" alt>
-        <input placeholder-class="in-bar" placeholder="书籍" class="bar" autofocus="true" type="text">
+        <input
+          @confirm="onConfirm"
+          placeholder-class="in-bar"
+          placeholder="书籍"
+          class="bar"
+          focus
+          type="text"
+        >
         <img class="cancel-img" src="/static/img/component/search/cancel.png" alt>
       </div>
       <div class="cancel" @click="onTap">取消</div>
+    </div>
+    <div>
+      <div class="history">
+        <div class="title">
+          <div class="chunk"></div>
+          <div>历史搜索</div>
+        </div>
+        <div class="tags">
+          <div class="tag" v-for="(item, index) in keywords" :key="index">
+            <Tag :text="item" @onTapping="onTag"></Tag>
+          </div>
+        </div>
+      </div>
+      <div class="history hot-search">
+        <div class="title">
+          <div class="chunk"></div>
+          <div>热门搜索</div>
+        </div>
+        <div class="tags">
+          <div class="tag" v-for="(item, index) in hotKeywords" :key="index">
+            <Tag :text="item" @onTapping="onTag"></Tag>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import Tag from '@/components/tag'
+import KeywordModel from './models/keyword'
+const keywordModel = new KeywordModel()
 export default {
   props: ['text', 'count'],
+  data() {
+    return { keywords: [], hotKeywords: [] }
+  },
+  components: { Tag },
   methods: {
     onTap(event) {
       this.$emit('onCancel', { flag: false })
+    },
+    onConfirm(event) {
+      console.log('onConfirm')
+      const word = event.target.value
+      keywordModel.addHistory(word)
+    },
+    onTag(event) {
+      console.log('onTag', event)
+    },
+    async getHotSearchKeyword() {
+      this.hotKeywords = (await keywordModel.getHotSearchKeyword()).hot
     }
+  },
+  created() {
+    this.keywords = keywordModel.getHistory()
+    this.getHotSearchKeyword()
+    // console.log('mounted', this.keywords)
   }
 }
 </script>
@@ -156,7 +210,7 @@ export default {
   width: 630rpx;
 }
 
-.tags v-tag {
+.tags .tag {
   margin-right: 20rpx;
   margin-bottom: 20rpx;
 }
