@@ -19,8 +19,14 @@ class BookModel extends Http {
       url: `/book/${bid}/favor`
     })
   }
-  search({ start = 0, count = 20, q }) {
-    return this.request({ url: `/book/${bid}/favor` })
+  search({start = 0, count = 20, q ) {
+    return this.request({
+      url: `/book/favor`,
+      data: {
+        start,
+        q
+      }
+    })
   }
 }
 
