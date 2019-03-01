@@ -6,12 +6,12 @@
 
 <script scoped>
 export default {
-  props: ['text']
+    props: ['text']
 }
 </script>
 
 <style scoped>
 .card {
-  padding: 10px;
+    padding: 10px;
 }
 </style>

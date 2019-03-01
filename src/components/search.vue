@@ -45,7 +45,7 @@
 <script>
 import Tag from '@/components/tag'
 import KeywordModel from './models/keyword'
-import BookModel from './models/bookModel'
+import BookModel from '@/models/book'
 const keywordModel = new KeywordModel()
 const bookModel = new BookModel()
 export default {

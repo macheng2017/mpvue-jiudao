@@ -6,31 +6,31 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-  state: {
-    count: 0,
-    musicState: ''
-  },
-  mutations: {
-    increment: state => {
-      const obj = state
-      obj.count += 1
+    state: {
+        count: 0,
+        musicState: ''
     },
-    decrement: state => {
-      const obj = state
-      obj.count -= 1
-    },
-    musicSrcChange: (state, playMus) => {
-      state.musicState = playMus.src
+    mutations: {
+        increment: state => {
+            const obj = state
+            obj.count += 1
+        },
+        decrement: state => {
+            const obj = state
+            obj.count -= 1
+        },
+        musicSrcChange: (state, playMus) => {
+            state.musicState = playMus.src
+        }
     }
-  }
-  // actions: {
-  //   increment: ({ commit }) => {
-  //     commit('increment')
-  //   },
-  //   decrement: ({ commit }) => {
-  //     commit('decrement')
-  //   }
-  // }
+    // actions: {
+    //   increment: ({ commit }) => {
+    //     commit('increment')
+    //   },
+    //   decrement: ({ commit }) => {
+    //     commit('decrement')
+    //   }
+    // }
 })
 
 export default store

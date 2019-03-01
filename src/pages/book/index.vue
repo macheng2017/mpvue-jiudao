@@ -27,100 +27,100 @@ import Search from '@/components/search'
 import Mask from '@/components/mask'
 const bookModel = new BookModel()
 export default {
-  data() {
-    return {
-      books: [],
-      searching: false
-    }
-  },
-  components: {
-    Book,
-    Search,
-    Mask
-  },
-  methods: {
-    _getHotList() {
-      const hotList = bookModel.getHotList()
-      hotList
-        .then(res => {
-          this.books = res
-        })
-        .catch(err => {
-          console.log(err, '错误')
-        })
+    data() {
+        return {
+            books: [],
+            searching: false
+        }
     },
-    onSearch() {
-      this.searching = true
+    components: {
+        Book,
+        Search,
+        Mask
     },
-    onCancel() {
-      this.searching = false
+    methods: {
+        _getHotList() {
+            const hotList = bookModel.getHotList()
+            hotList
+                .then(res => {
+                    this.books = res
+                })
+                .catch(err => {
+                    console.log(err, '错误')
+                })
+        },
+        onSearch() {
+            this.searching = true
+        },
+        onCancel() {
+            this.searching = false
+        }
+    },
+    mounted() {
+        this._getHotList()
     }
-  },
-  mounted() {
-    this._getHotList()
-  }
 }
 </script>
 
 <style scoped>
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 .sub-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f5f5f5;
-  margin-top: 100rpx;
-  /* z-index: -1; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f5f5f5;
+    margin-top: 100rpx;
+    /* z-index: -1; */
 }
 .header {
-  position: fixed;
-  background-color: #fff;
-  height: 100rpx;
-  width: 100%;
-  border-top: 1px solid #f5f5f5;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 3px 0 #e3e3e3;
-  z-index: 99;
+    position: fixed;
+    background-color: #fff;
+    height: 100rpx;
+    width: 100%;
+    border-top: 1px solid #f5f5f5;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 3px 0 #e3e3e3;
+    z-index: 99;
 }
 .box {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50px;
-  background-color: #f5f5f5;
-  height: 68rpx;
-  width: 700rpx;
-  color: #999;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    background-color: #f5f5f5;
+    height: 68rpx;
+    width: 700rpx;
+    color: #999;
 }
 .head-img {
-  width: 106rpx;
-  height: 34rpx;
-  margin-top: 40rpx;
+    width: 106rpx;
+    height: 34rpx;
+    margin-top: 40rpx;
 }
 .box img {
-  margin-right: 10px;
-  width: 14px;
-  height: 14px;
-  margin-bottom: -2px;
+    margin-right: 10px;
+    width: 14px;
+    height: 14px;
+    margin-bottom: -2px;
 }
 .book-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 0 90rpx 0 90rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 90rpx 0 90rpx;
 }
 .book {
-  margin-bottom: 10rpx;
+    margin-bottom: 10rpx;
 }
 </style>

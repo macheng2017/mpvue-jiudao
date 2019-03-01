@@ -17,6 +17,7 @@ module.exports = {
   plugins: ['html'],
   // add your custom rules here
   rules: {
+    indent: [2, 4, { SwitchCase: 1 }],
     'space-before-function-paren': ['error', 'never'],
     // allow paren-less arrow functions
     'arrow-parens': 0,

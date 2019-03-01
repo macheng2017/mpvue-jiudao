@@ -11,11 +11,11 @@
 import { mixin } from './classic-mixin.js'
 
 export default {
-  mixins: [mixin],
-  data() {
-    return {}
-  },
-  methods: {}
+    mixins: [mixin],
+    data() {
+        return {}
+    },
+    methods: {}
 }
 </script>
 <style scoped>

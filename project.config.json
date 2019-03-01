@@ -1,60 +1,60 @@
 {
-	"description": "项目配置文件。",
-	"setting": {
-		"urlCheck": false,
-		"es6": false,
-		"postcss": true,
-		"minified": true,
-		"newFeature": true,
-		"autoAudits": false,
-		"nodeModules": true
-	},
-	"miniprogramRoot": "dist/wx/",
-	"compileType": "miniprogram",
-	"appid": "wxf985e2db4b2169e8",
-	"projectname": "mpvue-jiudao",
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": 2,
-			"list": [
-				{
-					"id": -1,
-					"name": "book-detail",
-					"pathName": "pages/bookDetail/main",
-					"query": "bid=1120",
-					"scene": null
-				},
-				{
-					"id": 1,
-					"name": "book-detail",
-					"pathName": "pages/bookDetail/main",
-					"query": "bid=1049",
-					"scene": null
-				},
-				{
-					"id": 2,
-					"name": "book",
-					"pathName": "pages/book/main",
-					"query": "",
-					"scene": null
-				}
-			]
-		}
-	}
+    "description": "项目配置文件。",
+    "setting": {
+        "urlCheck": false,
+        "es6": false,
+        "postcss": true,
+        "minified": true,
+        "newFeature": true,
+        "autoAudits": false,
+        "nodeModules": true
+    },
+    "miniprogramRoot": "dist/wx/",
+    "compileType": "miniprogram",
+    "appid": "wxf985e2db4b2169e8",
+    "projectname": "mpvue-jiudao",
+    "condition": {
+        "search": {
+            "current": -1,
+            "list": []
+        },
+        "conversation": {
+            "current": -1,
+            "list": []
+        },
+        "plugin": {
+            "current": -1,
+            "list": []
+        },
+        "game": {
+            "currentL": -1,
+            "list": []
+        },
+        "miniprogram": {
+            "current": 2,
+            "list": [
+                {
+                    "id": -1,
+                    "name": "book-detail",
+                    "pathName": "pages/bookDetail/main",
+                    "query": "bid=1120",
+                    "scene": null
+                },
+                {
+                    "id": 1,
+                    "name": "book-detail",
+                    "pathName": "pages/bookDetail/main",
+                    "query": "bid=1049",
+                    "scene": null
+                },
+                {
+                    "id": 2,
+                    "name": "book",
+                    "pathName": "pages/book/main",
+                    "query": "",
+                    "scene": null
+                }
+            ]
+        }
+    }
 }

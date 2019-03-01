@@ -8,8 +8,8 @@
 <script>
 import { mixin } from './classic-mixin.js'
 export default {
-  mixins: [mixin],
-  data() {}
+    mixins: [mixin],
+    data() {}
 }
 </script>
 <style scoped>

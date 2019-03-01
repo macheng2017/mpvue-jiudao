@@ -15,32 +15,32 @@
 // import store from '../store'
 
 export default {
-  // computed: {
-  //   count() {
-  //     return store.state.count
-  //   }
-  // },
-  // methods: {
-  //   increment() {
-  //     store.commit('increment')
-  //   },
-  //   decrement() {
-  //     store.commit('decrement')
-  //   }
-  // }
+    // computed: {
+    //   count() {
+    //     return store.state.count
+    //   }
+    // },
+    // methods: {
+    //   increment() {
+    //     store.commit('increment')
+    //   },
+    //   decrement() {
+    //     store.commit('decrement')
+    //   }
+    // }
 }
 </script>
 
 <style>
 .counter-warp {
-  text-align: center;
-  margin-top: 100px;
+    text-align: center;
+    margin-top: 100px;
 }
 .home {
-  display: inline-block;
-  margin: 100px auto;
-  padding: 5px 10px;
-  color: blue;
-  border: 1px solid blue;
+    display: inline-block;
+    margin: 100px auto;
+    padding: 5px 10px;
+    color: blue;
+    border: 1px solid blue;
 }
 </style>
