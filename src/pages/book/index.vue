@@ -24,7 +24,7 @@
 import BookModel from '@/models/book'
 import Book from '@/components/book'
 import Search from '@/components/search'
-import Mask from '@/components/mask'
+// import Mask from '@/components/mask'
 const bookModel = new BookModel()
 export default {
     data() {
@@ -35,8 +35,8 @@ export default {
     },
     components: {
         Book,
-        Search,
-        Mask
+        Search
+        // Mask
     },
     methods: {
         _getHotList() {

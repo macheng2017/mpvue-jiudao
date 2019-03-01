@@ -10,6 +10,7 @@ export default {
     props: ['text', 'count'],
     methods: {
         onTap(event) {
+            console.log('onTap')
             this.$emit('onTapping', { text: this.text })
         }
     }

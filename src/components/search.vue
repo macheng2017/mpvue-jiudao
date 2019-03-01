@@ -58,12 +58,17 @@ export default {
         onTap(event) {
             this.$emit('onCancel', { flag: false })
         },
-        onConfirm(event) {
+        async onConfirm(event) {
             console.log('onConfirm')
             const word = event.target.value
+
+            const res = await bookModel.search(0, word)
+            console.log(res)
+
             keywordModel.addHistory(word)
         },
         onTag(event) {
+            console.log('onTag')
             console.log('onTag', event)
         },
         async getHotSearchKeyword() {
